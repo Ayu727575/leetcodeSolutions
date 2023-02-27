@@ -36,6 +36,22 @@ class Solution:
             return dp[ind][last]
         dp = [[-1 for i in range(c+1)] for i in range(r)]
         return t_points(r-1,c,dp)
+    # tabulation+DP
+    def ninja_dp_tabu(self, nums: List[int],r,c)->int:
+        dp = [[0 for _ in range(c+1)] for _ in range(r)]
+        dp[0][0] = max(nums[0][1],nums[0][2])
+        dp[0][1] = max(nums[0][0],nums[0][2])
+        dp[0][2] = max(nums[0][0],nums[0][1])
+        dp[0][3] = max(nums[0][1],max(nums[0][1],nums[0][2]))
+        for ind in range(1, r):
+            for last in range(c+1):
+                dp[ind][last]=0
+                for j in range(c):
+                    if j!=last:
+                        point = nums[ind][j]+dp[ind-1][j]
+                        dp[ind][last] = max(point,dp[ind][last])
+        return dp[r-1][c]
+        
 # arr = [1,2,3,1]
 # output = 4
 r,c = map(int,input().strip().split())
@@ -43,5 +59,7 @@ arr = list(list(map(int, input().strip().split())) for i in range(r))
 obj = Solution()
 ans = obj.ninja(arr,r,c)
 ans2 = obj.ninja_dp(arr,r,c)
+ans3 = obj.ninja_dp_tabu(arr,r,c)
 print(ans)
 print(ans2)
+print(ans3)
