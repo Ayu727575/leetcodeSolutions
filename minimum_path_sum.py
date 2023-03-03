@@ -37,8 +37,37 @@ def min_path_sum(matrix,r,c):
         return dp[i][j]
     dp = [[-1 for j in range(c)] for i in range(r)]
     return back_track(matrix,r-1,c-1,dp)
+
+def min_path_sum_tab_opt(matrix):
+    n = len(matrix)
+    m = len(matrix[0])
+    prev = [0 for j in range(m)]
+    for i in range(n):
+        curr = [0]*m
+        for j in range(m):
+            if i==0 and j==0:
+                curr[j] = matrix[i][j]
+            else:
+                up = matrix[i][j]
+                if i>0:
+                    up+=prev[j]
+                else:
+                    up+=sys.maxsize
+                left = matrix[i][j]
+                if j>0:
+                    left+=curr[j-1]
+                else:
+                    left+=sys.maxsize
+                
+                curr[j] = min(up,left)
+        prev=curr
+    return prev[m-1]
 if __name__ == "__main__":
     r, c = map(int, input().strip().split())
     arr = list(list(map(int, input().strip().split())) for i in range(r))
-    # print(min_path_sum(arr, r, c))
-    print(min_path_sum_tab(arr))
+    ans = min_path_sum(arr, r, c)
+    ans2 = min_path_sum_tab(arr)
+    ans3 = min_path_sum_tab_opt(arr)
+    print(ans)
+    print(ans2)
+    print(ans3)

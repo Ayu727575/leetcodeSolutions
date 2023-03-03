@@ -1,12 +1,17 @@
-def team(nums):
-    count=0
-    for r in nums:
-        if sum(r)>1:
-            count+=1
-    return count
-n = int(input())
-arr = [list(map(int, input().strip().split())) for i in range(n) ]
-print(team(arr))
+s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+map = {}
+for c in s:
+    map[c]=(ord(c) - ord('A')+1)
+print(map)
+# def team(nums):
+#     count=0
+#     for r in nums:
+#         if sum(r)>1:
+#             count+=1
+#     return count
+# n = int(input())
+# arr = [list(map(int, input().strip().split())) for i in range(n) ]
+# print(team(arr))
 # def way_to_long(word):
 #     if len(word)>10:
 #         return word[0]+str(len(word[1:-1]))+word[-1]
