@@ -60,6 +60,12 @@ class Solution:
 # arr = [1,2,3,1]
 # output = 4
 # arr = list(list(map(int, input().strip().split())) for i in range(r))
+# 3 3   
+# [[0 0 0],[0 1 0],[0 0 0]]
+# 2
+# 2
+# 2
+# 2
 r,c = map(int,input().strip().split())
 arr = list(list(map(int, input().strip().split())) for i in range(r))
 obj = Solution()

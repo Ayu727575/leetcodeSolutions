@@ -78,7 +78,7 @@ class Solution:
         for i in range(m):
             maxi = max(maxi,prev[i])      
         return maxi
-
+#[[2,1,3],[6,5,4],[7,8,9]]
 r,c = map(int, input().strip().split())
 arr = list(list(map(int, input().strip().split())) for _ in range(r))
 obj = Solution()
