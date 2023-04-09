@@ -7,7 +7,7 @@ def backtrack(i,target,arr,stack,ans):
     if i==len(arr):
         if target==0:
             print(stack)
-            ans.insert(0,stack)
+            ans.insert(0,list(stack))
             print(stack)
             return
         return
